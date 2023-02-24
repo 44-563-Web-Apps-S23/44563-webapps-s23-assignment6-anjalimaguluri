@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2> Painter entry by Naganjali Maguluri</h2>
+
+<form>
+    <label for="form1_secret">hidden painter name </label>
+    <input type ="password" id="form1_secret" name="form1_secret" value="Monet"> <br>
+    <label for="form1_name">Guess the painter</label>
+    <input type ="text" id="form1_name" name="form1_name" autofocus> <br>
+    <input type="button" onclick="checkPainter()" value="Check the guess">
+</form>
+<p id="result">This text will be replaced </p>
+<script> 
+    good = 0
+    oops = 0
+    function checkPainter (){
+        console.log("Getting form values")
+        secret = document.getElementById("form1_secret").value
+        name = document.getElementById("form1_name").value    
+        out = document.getElementById("result")
+       if(secret==name){
+            alert("You got it right")
+             good = good+1
+            out.innerHTML = "correct answer:"+ good +" wrong answer:"+ oops
+        } else {
+            alert("Sorry")
+            good = good+1
+            if (good == 0 && oops % 3 == 0 && oops != 0) {
+                        alert("Sorry, game over.");
+                        good = 0
+                        oops = 0
+                } else if (good > 0) {
+                        good = 0
+                        oops = 0
+                        out.innerHTML = "correct answer:" + good + " wrong answer:" + oops
+                }
+            out.innerHTML ="correct answer:"+ good + " wrong answer:"+ oops
+        }
+    }
+    </script>
+
+</body>
+</html> 
