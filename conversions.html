@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2>Naganjali Maguluri shows currency conversions</h2>
+
+<div class="container">
+    <form>
+        <div class="form-group">
+        <label for="base_value">Enter base amount </label>
+        <input type ="number" id="base_value" name="base_value" value=50> <br>
+        </div>
+        <div class="form-group">
+        <label for="converted_value">Enter the conversion rate</label>
+        <input type ="number" id="converted_value" name="converted_value" value=35> <br>
+        </div>
+        <input type="button" class="btn btn-warning" onclick="convert()" value="Apply conversion">
+    </form>
+
+    <p id="result">This text will be replaced </p>
+    </div>
+</div>
+<script> 
+    function convert()
+    {   
+        base_value=document.getElementById("base_value").value;
+        converted_value=document.getElementById("converted_value").value;
+        toShow="";
+        i = 0;
+        if (converted_value - Math.floor(converted_value) != 0) {
+          for (let i = 0; i <  5; i++) {
+            final_output = base_value + " is " + (base_value * converted_value).toFixed(1);
+            toShow = toShow + final_output + "; ";
+            base_value = base_value * 2;
+          }
+        } 
+        else
+         {
+          for (let i = 0; i < 5; i++) {
+            final_output = base_value + " is " + base_value * converted_value;
+            toShow = toShow + final_output + "; ";
+            base_value = base_value * 2;
+          }
+        }
+       
+        document.getElementById("result").innerHTML="Conversions are: "+toShow;
+    }
+</script>
+
+<div class="container">
+    <form>
+        <div class="form-group">
+        <input type="radio" id="first" name="operation" onclick="chooseOp()" value="mean">
+        <label for="first">average</label> <br>
+        </div>
+        <div class="form-group">
+        <input type="radio" id="second" name="operation" onclick="chooseOp()" value="maximum">
+        <label for="second">max</label> <br>
+        </div>
+    
+        <input type="radio" id="third" name="operation" onclick="chooseOp()" value="minimum">
+        <label for="third">min</label> <br>
+    </form>
+    
+    
+    
+    <p id="result2">This text will be replaced </p>
+    </div>
+    </div>
+    <script> 
+        function chooseOp()
+        {
+           base_value=document.getElementById("base_value").value;
+           converted_value=document.getElementById("converted_value").value;
+           mean=document.getElementById("first").checked;
+           maximum=document.getElementById("second").checked;
+           minimum=document.getElementById("third").checked;
+           results=0;
+           if(mean)
+           {
+            results=(parseInt(base_value)+parseInt(converted_value))/2;
+           }
+           else if(maximum)
+           {
+            results=Math.max(base_value,converted_value);
+           }
+           else if(minimum)
+           {
+            results=Math.min(base_value,converted_value);
+           }
+           document.getElementById("result2").innerHTML=results
+        
+        }
+    </script>
+
+
+
+
+
+</body>
+</html>

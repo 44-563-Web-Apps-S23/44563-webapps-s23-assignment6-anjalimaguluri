@@ -14,33 +14,49 @@
 </form>
 <p id="result">This text will be replaced </p>
 <script> 
-    good = 0
-    oops = 0
-    function checkPainter (){
-        console.log("Getting form values")
-        secret = document.getElementById("form1_secret").value
-        name = document.getElementById("form1_name").value    
-        out = document.getElementById("result")
-       if(secret==name){
-            alert("You got it right")
-             good = good+1
-            out.innerHTML = "correct answer:"+ good +" wrong answer:"+ oops
-        } else {
-            alert("Sorry")
-            good = good+1
-            if (good == 0 && oops % 3 == 0 && oops != 0) {
-                        alert("Sorry, game over.");
-                        good = 0
-                        oops = 0
-                } else if (good > 0) {
-                        good = 0
-                        oops = 0
-                        out.innerHTML = "correct answer:" + good + " wrong answer:" + oops
-                }
-            out.innerHTML ="correct answer:"+ good + " wrong answer:"+ oops
+        good = 0
+        oops = 0
+        function checkPainter() {
+            console.log("Getting form values")
+            secret = document.getElementById("form1_secret").value
+            guess = document.getElementById("form1_name").value
+            out = document.getElementById("result")
+            if (secret == guess)
+             {
+                alert("You got it right")
+                good = good + 1
+                out.innerHTML = "correct answer:" + good 
+            } 
+            else
+             {
+                alert("Sorry")
+                  oops = oops+1
+            } 
+                out.innerHTML = " wrong answer:" + oops
+                noOfGuesses(oops);
+            }
+    </script>
+<div style="padding: 75px 75px"><img src="agastache.jpg" id="plant" height="100px" width="100px" onclick="selectImage()"></div>
+<script>
+    var useImage=1;
+    function selectImage(){
+        switch(useImage){
+            case 1:
+            document.getElementById("plant").src="agastache.jpg"
+            useImage=2;
+            break;
+            case 2:
+            document.getElementById("plant").src="Giant Hyssop.jpg"
+            useImage=3;
+           break;
+            case 3:
+            document.getElementById("plant").src="Ladybells.jpg"
+            useImage=1;
+            break;
         }
     }
-    </script>
+</script>
+
 
 </body>
 </html> 

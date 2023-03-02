@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2>Naganjali Maguluri hooses candy</h2>
+
+
+<div class="container">
+    <form>
+       
+        <input type="checkbox" id="darkchocolate" name="candy" value="true">
+        <label for="darkchocolate">darkchocolate</label> <br>
+     
+        <input type="checkbox" id="nuts" name="nuts" value="true">
+        <label for="nuts">nuts</label> <br>
+    
+        <input type="checkbox" id="chewy" name="chewy" value="false">
+        <label for="chewy">chewy</label> <br>
+    
+        <input type="button" class="btn btn-warning" value="Select a vacation" onclick="selectBox()">
+    
+    </form>
+    <br>
+    <form>
+        <label for="size">Enter a size</label>
+        <input type="text" id="size" name="size" value="size"> <br>
+        
+        <label for="size">Enter price</label>
+        <input type="text" id="price" name="price"> <br>
+    
+        <input type="button" class="btn btn-success" value="Update the box" onclick="updateBox()">
+    </form>
+    
+    
+    
+    <p id="result">This text will be replaced </p>
+    </div>
+    </div>
+    <script> 
+    var my_candy_box={};
+    function selectBox()
+    {
+        my_candy_box={};
+        darkchocolate=document.getElementById("darkchocolate").checked
+        nuts=document.getElementById("nuts").checked
+        chewy=document.getElementById("chewy").checked
+    
+        if(darkchocolate)
+        {
+            my_candy_box.darkchocolate=true;
+        }
+        else
+        {
+            my_candy_box.darkchocolate=false;
+        }
+        if(nuts)
+        {
+            my_candy_box.nuts=true;
+        }
+        else
+        {
+            my_candy_box.nuts=false;
+        }
+        if(chewy)
+        {
+            my_candy_box.chewy=true;
+        }
+        else
+        {
+            my_candy_box.chewy=false;
+        }
+        
+    
+        document.getElementById("result").innerHTML=JSON.stringify(my_candy_box)
+    }
+    
+    function updateBox()
+    {
+        size=document.getElementById("size").value;
+        price=document.getElementById("price").value;
+        my_candy_box["size"]=size;
+        my_candy_box["price"]=price;
+    
+        document.getElementById("result").innerHTML=JSON.stringify(my_candy_box)
+        darkchocolate=document.getElementById("darkchocolate").checked=false;
+        nuts=document.getElementById("nuts").checked=false;
+        chewy=document.getElementById("chewy").checked=false;
+    
+    }
+    
+    </script>
+
+</body>
+</html>
